@@ -77,9 +77,121 @@ int main() {
 		cout << endl;
 	}*/
 	//centered star triangle
-	for (int i = 0; i < n; i++) {
-		cout << '*' << endl;
+	/*for (int i = n; i > 0; i--) {
+		for (int j = 0; j < i - 1; j++) {
+			cout << " ";
+		}
+		for (int k = 0; k <= 2 * (n - i); k++) {
+			cout << '*';
+		}
+		for (int l = 0; l < i - 1; l++) {
+			cout << " ";
+		}
+		cout << endl;
+	}*/
+	//inverted centered star triangle
+	/*for (int i = 0; i < n; i++) {
+		for (int j = 0; j < i; j++) {
+			cout << " ";
+		}
+		for (int k = 0; k < 2 * (n - i) - 1; k++) {
+			cout << '*';
+		}
+		for (int l = 0; l < i; l++) {
+			cout << " ";
+		}
+		cout << endl;
+	}*/
+	//normal and inverted centered star triangle together
+	/*for (int i = n; i > 0; i--) {
+		for (int j = 0; j < i - 1; j++) {
+			cout << " ";
+		}
+		for (int k = 0; k <= 2 * (n - i); k++) {
+			cout << '*';
+		}
+		for (int l = 0; l < i - 1; l++) {
+			cout << " ";
+		}
+		cout << endl;
 	}
-
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < i; j++) {
+			cout << " ";
+		}
+		for (int k = 0; k < 2 * (n - i) - 1; k++) {
+			cout << '*';
+		}
+		for (int l = 0; l < i; l++) {
+			cout << " ";
+		}
+		cout << endl;
+	}*/
+	//combination of two normal and inverted left handed star
+	/*int j = 0;
+	int k = j;
+	for (j = 0; j < (2 * n) - 1; j++) {
+		for (int i = 0; i <= k; i++) {
+			cout << '*';
+		}
+		if (j <= n - 2) {
+			k++;
+		}
+		else {
+			k--;
+		}
+		cout << endl;
+	}*/
+    //left handed binary triangle
+    /*for (int i = 1; i <= n; i++) {
+		if (i % 2 == 1) {
+			for (int j = 1; j <= i; j++) {
+				cout << (j % 2);
+			}
+		}
+		else {
+			for (int k = 0; k < i; k++) {
+				cout << (k % 2);
+			}
+		}
+		cout << endl;
+	}*/
+    //fucked up triangle
+    /*for (int i = 1; i <= n; i++) {
+		for (int j = 1; j <= i; j++) {
+			cout << j;
+		}
+		for (int k = 0; k < 2 * (n - i); k++)   {
+			cout << " ";
+		}
+		for (int l = 0; l < i; l++) {
+			cout << i - l;
+		}
+		cout << endl;
+	}*/
+    //1  23  456
+   /* int start = 1;
+    for (int i = 0; i < n; i++) {
+		for (int j = 0; j <= i; j++) {
+			cout << start;
+			start++;
+		}
+		cout << endl;
+	}*/
+    //A AB ABC
+    /*for (int i = n; i>0 ; i--) {
+		for (char ch = 'A'; ch < 'A' + i; ch++) {
+			cout << ch;
+		}
+		cout << endl;
+	}*/
+    //A BB CCC
+    /*for (char ch1='A'; ch1 < 'A' + n; ch1++) {
+		for (char ch = 'A'; ch <= ch1; ch++) {
+			cout << ch1;
+		}
+		cout << endl;
+	}*/
+    //Some patterns are not completed as they don't possess much priority  
 	return 0;
 }
