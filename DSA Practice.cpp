@@ -10,6 +10,7 @@
 #include<set>
 #include<map>
 #include<intrin.h>
+#include<algorithm>
 using namespace std;
 /*int printsum(int x, int y) {
 	return x + y;
@@ -38,7 +39,54 @@ where you will put string str; getline(cin, str); cout << str;
 char is also a data type and it is used to store character and these characters could have been stored in strings but strings will take more space to store these characters also these char are used within single quote unlike strings stored in double quote
 && is the symbol used for AND and || is the symbol used for OR
 in c++ there is else if not elif*/
-void containers() {
+    void sorting(int* arr, int n) {
+		/*for (int i = 0; i <= n - 2; i++) {
+			int mini = i;
+			for (int j = i + 1; j <= n - 1; j++) {
+				if (arr[j] < arr[mini]) {
+					mini = j;
+				}
+			}
+			swap(arr[mini], arr[i]);
+		}
+		for (int i = 0; i < n; i++) {
+			cout << arr[i] << endl;
+		}*/
+	}
+    /*bool containers(string s,int i,int n) {*/
+    //Reverse an array
+	/*if (i >= n / 2)return;
+	swap(arr[i], arr[n - i - 1]);
+	containers(arr, i + 1, n);*/
+    //To check if string is palindrome or not method 1
+	/*if (i >= j)return s;
+	swap(s[i], s[j]);
+	return containers(s, i + 1, j - 1);*/
+    //To check if string is palindrome or not method 2
+	/*if (i >= n / 2)return true;
+	if (s[i] != s[n - i - 1]) {
+		return false;
+	}
+	return containers(s, i + 1, n);*/
+	//Parameterised function-here operation actually happens in parameter
+	/*if (n1 == 0)return sum;
+	containers(n1-1,sum+n1);*/
+	//Fibonaci number
+	/*if (n1 == 0)return 0;
+	if (n1 == 1)return 1;
+	return containers(n1 - 1) + containers(n1 - 2);*/
+	//Print from N to 1 using backtraking
+	/*if (i == n1+1)return;
+	containers(i + 1, n1);
+	cout << i << endl;*/
+	//Factorial
+	/*if (n1 == 1||n1 == 0)return 1;
+	int factorials = n1 * containers(n1 - 1);
+	return factorials;*/
+	//Print sum of N numbers
+	/*if (n1 == 0)return 0;
+    int container = n1+containers(n1 - 1);
+	return container;*/
 	//pair
 	/*pair<int, pair<int, string>> rollno = { 3061,{2024,"UIT"}};
 	cout << rollno.second.first << rollno.second.second << rollno.first;*/
@@ -173,19 +221,126 @@ void containers() {
 	erase,swap,size,empty are same as above*/
     //multimap(sorted but not unique just like multi set)
     //unordered map(unique but not sorted just like unordered set)
-}
+//}
 //Pattern Solving
-int main() {
-	containers();
+	int main() {
+    //To sort an array using selection sort
 	int n;
 	cin >> n;
+	int* arr = new int[n];//This is a way to create a dynamic array int* arr = new int[n]
+	for (int i = 0; i < n; i++) {
+		cin >> arr[i];
+	}
+	sorting(arr, n);
+	delete[] arr;
+	//To reverse an array
+	/*int arr[5];
+	for (auto& it : arr) {
+		cin >> it;
+	}
+	int i = 0;
+	int n = sizeof(arr)/sizeof(arr[0]);
+	containers(arr, i, n);
+	for (int p = 0; p < n; p++) {
+		cout << arr[p];
+	}*/
+	/*int n1;
+	cin >> n1;
+	int sum = 0;*/
+	//To check if a string is a palindrome or not method 1
+	/*string s;
+	cin >> s;
+	int i = 0;
+	int j = s.length()-1;
+	string o = s;
+	if (containers(s, i, j) == o) {
+		cout << "Palindrome bitch";
+	}
+	else {
+		cout << "Nah man";
+	}*/
+	//To check if a string is a palindrome or not method 2
+    /*string s;
+	cin >> s;
+	int i = 0;
+	int n = s.length();
+	cout << containers(s,i,n);*/
+	//To find the HCF of two number method 1
+	/*int n1, n2;
+	cin >> n1 >> n2;
+	int k = 1;
+	for (int i = 1; i <= min(n1, n2); i++) {
+		if (n1 % i == 0 && n2 % i == 0) {
+			k = i;
+		}
+	}
+	cout << k;*/
+	//To find the HCF of two number method 2
+	/*int n1,n2;
+	cin >> n1 >> n2;
+	while (n1 > 0 && n2 > 0) {
+		if (n1 > n2) {
+			n1 = n1 % n2;
+		}
+		else {
+			n2 = n2 % n1;
+		}
+	}
+	if (n1 == 0) {
+		cout << n2;
+	}
+	else {
+		cout << n1;
+	}*/
+	//To check if number is prime
+	/*if(n<=1){
+	  cout << "Not prime";
+	}
+	int count = 0;
+	for (int i = 1; i*i <= n; i++) {
+		if (n % i == 0) {
+			count=count+2;
+		}
+	}
+	if (count > 2) {
+		cout << "Not prime";
+	}
+	else {
+		cout << "Prime bitch";
+	}*/
+	//to check armstrong number
+	/*int l = n;
+	int m = n;
+	int count = 0;
+	int k = 0;
+	while (m > 0) {
+		count++;
+		m = m / 10;
+	}
+	while (n > 0) {
+	    k = k + pow((n % 10),count);
+		n = n / 10;
+	}
+	if (k == l) {
+		cout << true;
+	}
+	else {
+		cout << false;
+	}*/
+	//palindrome checking
+	/*int k = n;
 	int revno = 0;
 	while (n > 0) {
 		int digit = n % 10;
 		revno = (revno * 10) + digit;
 		n = n / 10;
 	}
-	cout << revno;
+	if (revno == k) {
+		cout << "This is a palindrome";
+	}
+	else {
+		cout << "nah";
+	}*/
 	return 0;
 	//binary finder
 	/*int num = 7;
