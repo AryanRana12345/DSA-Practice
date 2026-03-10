@@ -39,7 +39,69 @@ where you will put string str; getline(cin, str); cout << str;
 char is also a data type and it is used to store character and these characters could have been stored in strings but strings will take more space to store these characters also these char are used within single quote unlike strings stored in double quote
 && is the symbol used for AND and || is the symbol used for OR
 in c++ there is else if not elif*/
-    void sorting(int* arr, int n) {
+//Merging algo
+/*void merging(int* arr, int low, int mid, int high) {
+	vector<int> vec;
+	int left = low;
+	int right = mid + 1;
+	while (left <= mid && right <= high) {
+		if (arr[left] <= arr[right]) {
+			vec.push_back(arr[left]);
+			left++;
+		}
+		else {
+			vec.push_back(arr[right]);
+			right++;
+		}
+	}
+	//Here all the elements with pointer right are already sorted leading to right<=high being false
+	while (left <= mid) {
+		vec.push_back(arr[left]);
+		left++;
+	}
+	while (right <= high) {
+		vec.push_back(arr[right]);
+		right++;
+	}
+	for (int i = low; i <= high; i++) {
+		arr[i] = vec[i - low];
+	}
+}*/
+    void sorting(int* arr, int low, int high) {
+		//For merge sort
+		/*int mid = (low + high) / 2;
+		if (low >= high) {
+			return;
+		}
+		sorting(arr, low, mid);
+		sorting(arr, mid + 1, high);
+		merging(arr, low, mid, high);*/
+		//For insertion sort
+		/*for (int i = 1; i < n; i++) {
+			for (int j = i; j > 0; j--) {
+				if (arr[j - 1] > arr[j]) {
+					swap(arr[j-1],arr[j]);
+				}
+			}
+		}
+		for (int i = 0; i < n; i++) {
+			cout << arr[i] << endl;
+		}*/
+		//For bubble sort
+		/*for (int i = 0; i < n-1; i++) {
+			bool swapped = false;
+			for (int j = 0; j <= n - i - 2; j++) {
+				if (arr[j] > arr[j+1]) {
+					swap(arr[j], arr[j+1]);
+					swapped = true;
+				}
+			}
+			if (swapped == false) break;
+		}
+		for (int i = 0; i < n; i++) {
+			cout << arr[i] << endl;
+		}*/
+		//For selection sort
 		/*for (int i = 0; i <= n - 2; i++) {
 			int mini = i;
 			for (int j = i + 1; j <= n - 1; j++) {
@@ -225,14 +287,87 @@ in c++ there is else if not elif*/
 //Pattern Solving
 	int main() {
     //To sort an array using selection sort
+	/*sorting(arr, n);*/
+	//To perform Bubble sort
+    //To sort an array using Merge sort
 	int n;
+	cin >> n;
+	int* arr = new int[n];
+	for (int i = 0; i < n; i++) {
+		cin >> arr[i];
+	}
+	int high = n - 1;
+	int low = 0;
+	sorting( arr, low , high );
+	for (int i = 0; i < n; i++) {
+		cout << arr[i];
+	}
+	delete[] arr;
+	//To perform number hashing using map - you can also use unordered map and its best and average time is O(1) but worst case is O(n) and in case of ordered and sorted map complexity is O(logn) in all cases
+	/*int n;
 	cin >> n;
 	int* arr = new int[n];//This is a way to create a dynamic array int* arr = new int[n]
 	for (int i = 0; i < n; i++) {
 		cin >> arr[i];
 	}
-	sorting(arr, n);
+	map<int, int> mpp;
+	for (int i = 0; i < n; i++) {
+		mpp[arr[i]]++;
+	}
+	int m;
+	cin >> m;
+	while (m--) {
+		int o;
+		cin >> o;
+		cout << mpp[o];//you did this but if in query there is a key which doesn't exist in the map previously then your asking will create it with value zero.
+	}
+	for (auto it : mpp) {
+		cout << it.first << " " << it.second;
+	}*/
+	//To perform character hashing using array
+	/*string s;
+	cin >> s;
+	int arr[256] = { 0 };
+	for (int i = 0; i < s.length(); i++) {
+		arr[s[i]]++;
+	}
+	int n;
+	cin >> n;
+	for (int i = 0; i < n; i++) {
+		char m;
+		cin >> m;
+		cout << arr[m];
+	}*/
+	//To perform number hashing using array
+	/*int n;
+	cin >> n;
+	int* arr = new int[n];//This is a way to create a dynamic array int* arr = new int[n]
+	for (int i = 0; i < n; i++) {
+		cin >> arr[i];
+	}
+	int m;
+	cout << "What is the range of queries you will ask?" << endl;
+	cin >> m;
+	int* hash = new int[m+1]();
+	for (int i = 0; i < n; i++) {
+		hash[arr[i]]++;
+	}
+	int o;
+	cout << "How many queries?" << endl;
+	cin >> o;
+	int* arrr = new int[o];
+	for (int i = 0; i < o; i++) {
+		cin >> arrr[i];
+		if (arrr[i] > m || arrr[i] < 0) {
+			cout << "Nigga what the fuck you doing?" << endl;
+		}
+		else {
+			cout << hash[arrr[i]] << endl;
+		}
+	}
 	delete[] arr;
+	delete[] hash;
+	delete[] arrr;*/
 	//To reverse an array
 	/*int arr[5];
 	for (auto& it : arr) {
