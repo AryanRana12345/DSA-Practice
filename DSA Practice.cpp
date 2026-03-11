@@ -67,7 +67,96 @@ in c++ there is else if not elif*/
 		arr[i] = vec[i - low];
 	}
 }*/
-    void sorting(int* arr, int low, int high) {
+//Quick sorting algo
+ /*   void QuickSorting(int* arr,int i,int j) {
+		int pivot = arr[i];
+		while (j > i) {
+			if (arr[j] <= pivot && arr[i] > pivot) {
+				swap(arr[j], arr[i]);
+			}
+			j--;
+			i++;
+		}
+		while (j <= i) {
+			if (arr[j] <= pivot && arr[i] > pivot) {
+				swap(pivot, arr[j]);
+			}
+			j--;
+			i++;
+		}
+		QuickSorting(arr,i,)
+	}*/
+    void sorting(int* arr,int n,int k) {
+		//Left rotate array by D
+		/*k = k % n;
+		for (int i = 0; i < k/2; i++) {
+			swap(arr[i], arr[k - i - 1]);
+		}
+		for (int j = 0; j < (n - k) / 2; j++) {
+			swap(arr[k + j], arr[n - 1 - j]);
+		}
+		for (int m = n-1; m >= 0; m--) {
+			cout << arr[m] << endl;
+		}*/
+		//Left rotate array by one
+		/*int temp = arr[0];
+		for (int i = 0; i < n - 1; i++) {
+			arr[i] = arr[i + 1];
+		}
+		arr[n - 1] = temp;
+		for (int i = 0; i < n; i++) {
+			cout << arr[i];
+		}*/
+		//Removing duplicates in an array
+		/*int i = 0;
+		for (int j = 1; j < n; j++) {
+			if (arr[i] != arr[j]) {
+				i++;
+				arr[i] = arr[j];
+			}
+		}
+		for (int k = 0; k <= i; k++) {
+			cout << arr[k] << endl;
+		}*/
+		//Finding if an array is already sorted
+		/*bool sorted = true;
+		for (int i = 0; i < n -1; i++) {
+			if (arr[i] <= arr[i + 1]) {
+				
+			}
+			else {
+				cout << "Not sorted";
+				sorted = false;
+				break;
+			}
+		}
+		if (sorted) {
+			cout << "Sorted";
+		}*/
+		//Finding second largest element
+		/*int lelement = arr[0];
+		int slelement = -1;
+		for (int i = 0; i < n; i++) {
+			if (arr[i] > lelement) {
+				slelement = lelement;
+				lelement = arr[i];
+			}
+			else if (lelement > arr[i] && arr[i] > slelement) {
+				slelement = arr[i];
+			}
+		}
+		cout << slelement;*/
+		//Finding largest element
+		/*int largest_element = arr[0];
+		for (int i = 1; i < n; i++) {
+			if (arr[i] > largest_element) {
+				largest_element = arr[i];
+			}
+		}
+		cout << largest_element;*/
+		//For quick sort
+		/*QuickSorting(arr, i, j);
+		sorting(arr, );*/
 		//For merge sort
 		/*int mid = (low + high) / 2;
 		if (low >= high) {
@@ -290,18 +379,14 @@ in c++ there is else if not elif*/
 	/*sorting(arr, n);*/
 	//To perform Bubble sort
     //To sort an array using Merge sort
-	int n;
+	int n,k;
 	cin >> n;
 	int* arr = new int[n];
 	for (int i = 0; i < n; i++) {
 		cin >> arr[i];
 	}
-	int high = n - 1;
-	int low = 0;
-	sorting( arr, low , high );
-	for (int i = 0; i < n; i++) {
-		cout << arr[i];
-	}
+	cin >> k;
+	sorting(arr,n,k);
 	delete[] arr;
 	//To perform number hashing using map - you can also use unordered map and its best and average time is O(1) but worst case is O(n) and in case of ordered and sorted map complexity is O(logn) in all cases
 	/*int n;
