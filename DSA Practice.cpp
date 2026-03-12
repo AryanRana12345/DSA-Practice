@@ -86,8 +86,84 @@ in c++ there is else if not elif*/
 		}
 		QuickSorting(arr,i,)
 	}*/
-    void sorting(int* arr,int n,int k) {
+    void sorting(int* arr,int* arra,int n,int n1) {
+		//Union of two sorted array
+		/*int counter = 0;
+		int* arraa = new int[n+n1];
+		int i = 0;
+		int j = 0;
+		while (i < n && j < n1) {
+			if (arr[i] > arra[j]) {
+				if (counter == 0 || arraa[counter-1] != arra[j]) {
+					arraa[counter] = arra[j];
+					counter++;
+				}
+				j++;
+			}
+			else if (arr[i] < arra[j]) {
+				if (counter == 0 || arraa[counter-1] != arr[i]) {
+					arraa[counter] = arr[i];
+					counter++;
+					
+				}
+				i++;
+			}
+			else {
+				if (counter == 0 || arraa[counter-1] != arr[i]) {
+					arraa[counter] = arr[i];
+					counter++;
+				}
+				i++;
+				j++;
+			}
+		}
+		while (i < n) {
+			if (counter == 0 || arraa[counter - 1] != arr[i]) {
+				arraa[counter] = arr[i];
+				counter++;
+			}
+			i++;
+		}
+		while (j < n1) {
+			if (counter == 0 || arraa[counter - 1] != arra[j]) {
+				arraa[counter] = arra[j];
+				counter++;
+			}
+			j++;
+		}
+		for (int i = 0; i < counter; i++) {
+			cout << arraa[i] << " ";
+		}*/
+		//Linear Search
+		/*int j = -1;
+		for (int i = 0; i < n; i++) {
+			if (arr[i] == n1) {
+				j = i;
+				break;
+			}
+		}
+		cout << j+1;*/
+		//Move zeros to end
+		/*int j=0;
+		int i;
+		for (i = 0; i < n; i++) {
+			if (arr[i] == 0) {
+				j = i;
+				break;
+			}
+		}
+		i++;
+		for (i; i < n; i++) {
+			if (arr[i] != 0) {
+				swap(arr[j], arr[i]);
+				j++;
+			}
+		}
+		for (int k = 0; k < n; k++) {
+			cout << arr[k] << " ";
+		}*/
 		//Left rotate array by D
+		//there is a better way that is by using reverse(arr,arr + d) this will reverse the array from 0th to d-1th element
 		/*k = k % n;
 		for (int i = 0; i < k/2; i++) {
 			swap(arr[i], arr[k - i - 1]);
@@ -379,14 +455,17 @@ in c++ there is else if not elif*/
 	/*sorting(arr, n);*/
 	//To perform Bubble sort
     //To sort an array using Merge sort
-	int n,k;
-	cin >> n;
+	int n,n1;
+	cin >> n >> n1;
 	int* arr = new int[n];
+	int* arra = new int[n1];
 	for (int i = 0; i < n; i++) {
 		cin >> arr[i];
 	}
-	cin >> k;
-	sorting(arr,n,k);
+	for (int i = 0; i < n1; i++) {
+		cin >> arra[i];
+	}
+	sorting(arr,arra,n,n1);
 	delete[] arr;
 	//To perform number hashing using map - you can also use unordered map and its best and average time is O(1) but worst case is O(n) and in case of ordered and sorted map complexity is O(logn) in all cases
 	/*int n;
