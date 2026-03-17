@@ -86,21 +86,199 @@ in c++ there is else if not elif*/
 		}
 		QuickSorting(arr,i,)
 	}*/
-    void sorting(int* arr,int* arra,int n,int n1) {
+    //Finding missing number(XOR approach)
+    /*int xoring(int n) {
+		if (n == 0) {
+			return 0;
+		}
+		return n ^ xoring(n - 1);
+	}*/
+    void sorting(int* arr,int n,int o) {
+		//Two sum problem
+		/*sort(arr, arr + n);
+		int i = 0;
+		int j = n - 1;
+		while (i < j) {
+			if (arr[i] + arr[j] > o) {
+				j--;
+			}
+			else if (arr[i] + arr[j] < o) {
+				i++;
+			}
+			else {
+				cout << "YESSS";
+				break;
+			}
+		}
+		cout << "No";*/
+		//Sorting an array containing only 0, 1 and 2(three pointer approach)
+		/*int i = 0;
+		int j = 0;
+		int k = n - 1;
+		while (j <= k) {
+			if (arr[j] == 1) {
+				j++;
+			}
+			else if (arr[j] == 0) {
+				swap(arr[i], arr[j]);
+				i++;
+			}
+			else if (arr[j] == 2) {
+				swap(arr[j], arr[k]);
+				k--;
+			}
+		}
+		for (int i = 0; i < n; i++) {
+			cout << arr[i];
+		}*/
+		//Longest subarray with sum k(include zeros) -- Optimal sol
+		/*int j = 0;
+		int sum = 0;
+		int len = 0;
+		for (int i = 0; i < n; i++) {
+			if (sum < k) {
+				sum += arr[i];
+			}
+			else if (sum > k) {
+				sum -= arr[j];
+				j++;
+			}
+			else {
+				len = i - j + 1;
+			}
+		}
+		cout << len;*/
+		//Longest subarray with sum k(include zeros) -- just a slight change here we add condition before emplace because since sum will be same so it checks whether a key with sum exists and if it exists it doesm't updates it
+		//Although for array containing positive, negative and zeros this is the optimality and if considering only positive and zeros this is just a better case not optimal
+		/*map<int, int> mpp;
+		int sum = 0;
+		int len = 0;
+		for (int i = 0; i < n; i++) {
+			sum = sum + arr[i];
+			if (sum == k) {
+				len = max(i + 1,len);
+			}
+			int rem = sum - k;
+			if (mpp.find(rem) != mpp.end()) {
+				len = max(len, i - mpp[rem]);
+			}
+			if (mpp.find(sum) == mpp.end()) {
+				mpp.emplace(sum, i);
+			}
+		}
+		cout << len;*/
+		//Longest subarray with sum k(positive)
+		/*map<int, int> mpp;
+		int sum = 0;
+		int len = 0;
+		for (int i = 0; i < n; i++) {
+			sum = sum + arr[i];
+			if (sum == k) {
+				len = max(i + 1,len);
+			}
+			int rem = sum - k;
+			if (mpp.find(rem) != mpp.end()) {
+				len = max(len, i - mpp[rem]);
+			}
+			mpp.emplace(sum, i);
+		}
+		cout << len;*/
+		//Find the number that appears once and others appear twice
+		/*int xor1 = 0;
+		for (int i = 0; i < n; i++) {
+			xor1 = xor1 ^ arr[i];
+		}
+		cout << xor1;*/
+		//Maximum consecutive ones
+		/*int max = 0;
+		int counter = 0;
+		for (int i = 0; i < n; i++) {
+			if (arr[i] == 1) {
+				counter++;
+				if (counter > max) {
+					max = counter;
+				}	
+			}
+			else {
+				counter = 0;
+			}
+		}
+		cout << max;*/
+		//Find missing number(suming approach)
+		/*int sum = ((n + 2) * (n + 1)) / 2;
+		int arr_sum = 0;
+		for (int i = 0; i < n; i++) {
+			arr_sum = arr_sum + arr[i];
+		}
+		cout << sum - arr_sum;*/
+		//Find missing number(XOR approach)
+		/*int xor3 = xoring(n + 1);
+		int xor2 = 0;
+		for (int i = 0; i < n; i++) {
+			xor2 = xor2 ^ arr[i];
+		}
+		int xor4 = xor2 ^ xor3;
+		cout << xor4;*/
+		//Intersection of two sorted array(repetition allowed)
+		/*int counter = 0;
+		int* arraa = new int[n + n1];
+		int i = 0;
+		int j = 0;
+		while (i < n && j < n1) {
+			if (arr[i] > arra[j]) {
+				j++;
+			}
+			else if (arr[i] < arra[j]) {
+				i++;
+			}
+			else {
+				arraa[counter] = arra[j];
+				counter++;
+				i++;
+				j++;
+			}
+		}
+		for (int i = 0; i < counter; i++) {
+			cout << arraa[i] << " ";
+		}*/
+		//Intersection of two sorted array(repetition not allowed)
+		/*int counter = 0;
+		int* arraa = new int[n + n1];
+		int i = 0;
+		int j = 0;
+		while (i < n && j < n1) {
+			if (arr[i] > arra[j]) {
+				j++;
+			}
+			else if (arr[i] < arra[j]) {
+				i++;
+			}
+			else {
+				if (counter == 0 || arraa[counter - 1] != arra[j]) {
+					arraa[counter] = arra[j];
+					counter++;
+				}
+				i++;
+				j++;
+			}
+		}
+		for (int i = 0; i < counter; i++) {
+			cout << arraa[i] << " ";
+		}*/
 		//Union of two sorted array
 		/*int counter = 0;
 		int* arraa = new int[n+n1];
 		int i = 0;
 		int j = 0;
 		while (i < n && j < n1) {
-			if (arr[i] > arra[j]) {
+			if (arr[i] >= arra[j]) {
 				if (counter == 0 || arraa[counter-1] != arra[j]) {
 					arraa[counter] = arra[j];
 					counter++;
 				}
 				j++;
 			}
-			else if (arr[i] < arra[j]) {
+			else{
 				if (counter == 0 || arraa[counter-1] != arr[i]) {
 					arraa[counter] = arr[i];
 					counter++;
@@ -108,7 +286,7 @@ in c++ there is else if not elif*/
 				}
 				i++;
 			}
-			else {
+			else { this was used for equality case but turns out it does not needs to be specifically checked and could be added in above cases as think of it like we basically had two strong gates first one with if for sorting and the other one which compares added element to the previous last element for duplication
 				if (counter == 0 || arraa[counter-1] != arr[i]) {
 					arraa[counter] = arr[i];
 					counter++;
@@ -455,17 +633,14 @@ in c++ there is else if not elif*/
 	/*sorting(arr, n);*/
 	//To perform Bubble sort
     //To sort an array using Merge sort
-	int n,n1;
-	cin >> n >> n1;
+	int n,o;
+	cin >> n;
 	int* arr = new int[n];
-	int* arra = new int[n1];
 	for (int i = 0; i < n; i++) {
 		cin >> arr[i];
 	}
-	for (int i = 0; i < n1; i++) {
-		cin >> arra[i];
-	}
-	sorting(arr,arra,n,n1);
+	cin >> o;
+	sorting(arr,n,o);
 	delete[] arr;
 	//To perform number hashing using map - you can also use unordered map and its best and average time is O(1) but worst case is O(n) and in case of ordered and sorted map complexity is O(logn) in all cases
 	/*int n;
