@@ -93,7 +93,130 @@ in c++ there is else if not elif*/
 		}
 		return n ^ xoring(n - 1);
 	}*/
-    void sorting(int* arr,int n,int o) {
+    void sorting(int* arr,int n) {
+		//Stock buy and sell
+		/*int max_profit = 0;
+		int min = arr[0];
+		int maxi = arr[0];
+		for (int i = 1; i < n; i++) {
+			if (arr[i] > maxi) {
+				maxi = arr[i];
+			}
+			else if (arr[i] < min) {
+				min = arr[i];
+				maxi = arr[i];
+			}
+			max_profit = max(max_profit, maxi - min);
+		}
+		cout << max_profit << " ";*/
+		//Rearrange array elements by sign(only when positives and negatives are not equal in mumber)
+		/*int j = 0;
+		int* arra = new int[n];
+		int k = 0;
+		int* arraa = new int[n];
+		int l = 0;
+		for (int i = 0; i < n; i++) {
+			if (arr[i] > 0) {
+				arra[j] = arr[i];
+				j++;
+			}
+			else if (arr[i] < 0) {
+				arraa[k] = arr[i];
+				k++;
+			}
+			else {
+				l++;
+			}
+		}
+		int m = 0;
+		int o = 0;
+		for (int i = 0; i < n; i++) {
+			if (i % 2 == 0 && m<j) {
+				arr[i] = arra[m];
+				m++;
+			}
+			else if(i%2 != 0 && o < k){
+				arr[i] = arraa[o];
+				o++;
+			}
+		}
+		for (int i = 0; i < n; i++) {
+			cout << arr[i] << " ";
+		}*/
+		//Rearrange array elements by sign(only when positives and negatives are equal in mumber)
+		/*int* arra = new int[n];
+		int positive = 0;
+		int negative = 1;
+		int end = n - 1;
+		for (int i = 0; i < n; i++) {
+			if (arr[i] > 0) {
+				arra[positive] = arr[i];
+				positive += 2;
+			}
+			else if (arr[i] < 0) {
+				arra[negative] = arr[i];
+				negative += 2;
+			}
+			else {
+				arra[end] = arr[i]; 
+				end--;
+			}
+		}
+		for (int i = 0; i < n; i++) {
+			cout << arra[i] << " ";
+		}*/
+		//Try to do kadane algo with exact good approach
+		/*int sum = 0;
+		int storage = 0;
+		for (int i = 0; i < n; i++) {
+			sum += arr[i];
+			storage = max(storage, sum);
+			if (sum < 0) {
+				sum = 0;
+			}
+		}
+		cout << storage;*/
+		//Kadane's algorithm(largest subarray with maximum sum)
+		/*int sum = 0;
+		int storage = 0;
+		for (int i = 0; i < n; i++) {
+			sum += arr[i];
+			if (sum < 0) {
+				storage = max(storage, sum - arr[i]);
+				sum = 0;
+			}
+			else {
+				storage = max(storage, sum);
+			}
+		}
+		cout << storage;*/
+		//Most occuring element(More than n/2 times)
+		/*int count = 1;
+		int max_element = arr[0];
+		for (int i = 1; i < n; i++) {
+			if (arr[i] == max_element) {
+				count++;
+			}
+			else {
+				count--;
+			}
+			if (count == 0) {
+				max_element = arr[i + 1];
+				count = 0;
+			}	
+		}
+		int count2 = 0;
+		for (int j = 0; j < n; j++) {
+			if (arr[j] == max_element) {
+				count2++;
+			}
+		}
+		if (count2 > n / 2) {
+			cout << "Yes";
+		}
+		else {
+			cout << "Nope";
+		}*/
 		//Two sum problem
 		/*sort(arr, arr + n);
 		int i = 0;
@@ -633,14 +756,13 @@ in c++ there is else if not elif*/
 	/*sorting(arr, n);*/
 	//To perform Bubble sort
     //To sort an array using Merge sort
-	int n,o;
+	int n;
 	cin >> n;
 	int* arr = new int[n];
 	for (int i = 0; i < n; i++) {
 		cin >> arr[i];
 	}
-	cin >> o;
-	sorting(arr,n,o);
+	sorting(arr,n);
 	delete[] arr;
 	//To perform number hashing using map - you can also use unordered map and its best and average time is O(1) but worst case is O(n) and in case of ordered and sorted map complexity is O(logn) in all cases
 	/*int n;
