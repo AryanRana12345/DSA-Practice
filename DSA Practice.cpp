@@ -93,7 +93,121 @@ in c++ there is else if not elif*/
 		}
 		return n ^ xoring(n - 1);
 	}*/
-    void sorting(int* arr,int n) {
+    void sorting(vector<vector<int>>& arr,int n,int m) {
+		//Set zeros matrix
+		/*bool firstrowzero = false;
+		bool firstcolzero = false;
+		for (int i = 0; i < n; i++) {
+			if (arr[i][0] == 0) {
+				firstcolzero = true;
+				break;
+			}
+		}
+		for (int j = 0; j < m; j++) {
+			if (arr[0][j] == 0) {
+				firstrowzero = true;
+				break;
+			}
+		}
+		for (int i = 1; i < n; i++) {
+			for (int j = 1; j < m; j++) {
+				if (arr[i][j] == 0) {
+					arr[0][j] = 0;
+					arr[i][0] = 0;
+				}
+			}
+		}
+		for (int i = n - 1; i >= 1; i--) {
+			for (int j = m - 1; j >= 1; j--) {
+				if (arr[i][0] == 0 || arr[0][j] == 0) {
+					arr[i][j] = 0;
+				}
+			}
+		}
+		if (firstrowzero) {
+			for (int i = 0; i < m; i++) {
+				arr[0][i] = 0;
+			}
+		}
+		if (firstcolzero) {
+			for (int i = 0; i < n; i++) {
+				arr[i][0] = 0;
+			}
+		}
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < m; j++) {
+				cout << arr[i][j] << " ";
+			}
+			cout << " " << endl;
+		}*/
+		//Rotate matrix by 90 degree
+		/*for (int i = 0; i < n; i++) {
+			for (int j = i+1; j < n; j++) {
+				swap(arr[i][j], arr[j][i]);
+			}
+		}
+		for (int i = 0; i < n; i++) {
+			reverse(arr[i].begin(), arr[i].end());
+		}
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				cout << arr[i][j] << " ";
+			}
+			cout << " " << endl;
+		}*/
+		//Spiral matrix
+		/*int top = 0;
+		int bottom = n - 1;
+		int left = 0;
+		int right = m - 1;
+		while (top <= bottom && left <= right) {
+			for (int i = left; i <= right; i++) {
+				cout << arr[top][i];
+			}
+			top++;
+			for (int i = top; i <= bottom; i++) {
+				cout << arr[i][right];
+			}
+			right--;
+			if (top <= bottom) {
+				for (int i = right; i >= left; i--) {
+					cout << arr[bottom][i];
+				}
+				bottom--;
+			}
+			if (left <= right) {
+				for (int i = bottom; i >= top; i--) {
+					cout << arr[i][left];
+				}
+				left++;
+			}
+		}*/
+		//Next permutation
+		/*int val = -1;
+		for (int i = n - 1; i >= 1; i--) {
+			if (arr[i] > arr[i - 1]) {
+				arr[val] = arr[i - 1];
+				val = i - 1;
+				break;
+			}
+		}
+		if (arr[val] == -1) {
+			reverse(arr,arr+n);
+			for (int i = 0; i < n; i++) {
+				cout << arr[i] << " ";
+			}
+			return;
+		}
+		for (int i = n - 1; i > val; i--) {
+			if (arr[i] > arr[val]) {
+				swap(arr[i], arr[val]);
+				break;
+			}
+		}
+		reverse(arr + val+1, arr + n);
+		for (int i = 0; i < n; i++) {
+			cout << arr[i] << " ";
+		}*/
 		//Stock buy and sell
 		/*int max_profit = 0;
 		int min = arr[0];
@@ -752,18 +866,28 @@ in c++ there is else if not elif*/
 //}
 //Pattern Solving
 	int main() {
+		int n,m;
+		cin >> n >> m;
+		/*int* arr = new int[n*m];*///accessing it is arr[2*m+3] row is 2nd and column is 3rd
+		vector<vector<int>> arr(n, vector<int>(m));//this is considered a more better approachq1
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < m; j++) {
+				cin >> arr[i][j];
+			}
+		}
+		sorting(arr, n, m);
     //To sort an array using selection sort
 	/*sorting(arr, n);*/
 	//To perform Bubble sort
     //To sort an array using Merge sort
-	int n;
+	/*int n;
 	cin >> n;
 	int* arr = new int[n];
 	for (int i = 0; i < n; i++) {
 		cin >> arr[i];
 	}
 	sorting(arr,n);
-	delete[] arr;
+	delete[] arr;*/
 	//To perform number hashing using map - you can also use unordered map and its best and average time is O(1) but worst case is O(n) and in case of ordered and sorted map complexity is O(logn) in all cases
 	/*int n;
 	cin >> n;
