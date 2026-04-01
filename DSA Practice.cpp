@@ -9,6 +9,7 @@
 #include<concurrent_priority_queue.h>
 #include<set>
 #include<map>
+#include<unordered_map>
 #include<intrin.h>
 #include<algorithm>
 using namespace std;
@@ -93,7 +94,37 @@ in c++ there is else if not elif*/
 		}
 		return n ^ xoring(n - 1);
 	}*/
-    void sorting(vector<vector<int>>& arr,int n,int m) {
+void sorting(vector<int> arr,int n,int k) {
+	    //Count subarray with sum K
+	    unordered_map<int, int> mpp;
+		mpp[0] = 1;
+		int count = 0;
+		int sum = 0;
+	    for (int i = 0; i < n; i++) {
+			sum = sum + arr[i];
+			mpp[sum] += 1;
+			if (mpp.find(sum - k) != mpp.end()) {
+				count = count + mpp[sum - k];
+			}
+		}
+		cout << count;
+		//Pascal's triangle to give element at row and column
+	    /*if (row - col > col) {
+			int ans = 1;
+			for (int i = 0; i < col; i++) {
+				ans = ans * (row - i);
+				ans = ans / (i + 1);
+			}
+			cout << ans;
+		}
+		else{
+		  int ans = 1;
+			for (int i = 0; i < row-col; i++) {
+				ans = ans * (row - i);
+				ans = ans / (i + 1);
+			}
+			cout << ans;
+		}*/
 		//Set zeros matrix
 		/*bool firstrowzero = false;
 		bool firstcolzero = false;
@@ -866,16 +897,25 @@ in c++ there is else if not elif*/
 //}
 //Pattern Solving
 	int main() {
-		int n,m;
+		int n;
+		cin >> n;
+		vector<int> arr;
+		for (int i = 0; i < n; i++) {
+			cin >> arr[i];
+		}
+		int k;
+		cin >> k;
+        sorting(arr,n,k);
+		//for taking input for matrix
+		/*int n, m;
 		cin >> n >> m;
-		/*int* arr = new int[n*m];*///accessing it is arr[2*m+3] row is 2nd and column is 3rd
+		int* arr = new int[n*m];accessing it is arr[2*m+3] row is 2nd and column is 3rd
 		vector<vector<int>> arr(n, vector<int>(m));//this is considered a more better approachq1
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < m; j++) {
 				cin >> arr[i][j];
 			}
-		}
-		sorting(arr, n, m);
+		}*/
     //To sort an array using selection sort
 	/*sorting(arr, n);*/
 	//To perform Bubble sort
